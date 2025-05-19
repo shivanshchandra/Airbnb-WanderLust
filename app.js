@@ -22,7 +22,6 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl = process.env.ATLASDB_URL;
 
 main()
@@ -34,7 +33,6 @@ main()
   });
 
 async function main() {
-  // await mongoose.connect(MONGO_URL);
   await mongoose.connect(dbUrl);
 }
 
@@ -74,14 +72,6 @@ const sessionOptions = {
 };
 
 
-
-// app.get("/", (req, res) => {
-//   res.send("Hi, I am root");
-// });
-
-
-
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -105,18 +95,6 @@ app.use((req, res, next) => {
 
 
 
-// app.use("/demoUser", async(req, res) => {
-//   let fakeUser = new User({
-//     email: "student@gmail.com",
-//     username: "delta-student",
-//   });
-
-//   let registeredUser = await User.register(fakeUser, "helloWorld");
-//   res.send(registeredUser);
-// });
-
-
-
 //Listing Route (Index, New, Show, Create, Edit, Update, Delete Routes)
 app.use("/listings", listingRouter);
 
@@ -125,22 +103,6 @@ app.use("/listings/:id/reviews", reviewRouter);
 
 //User Route
 app.use("/", userRouter);
-
-
-
-// app.get("/testListing", wrapAsync(async (req, res) => {
-//   let sampleListing = new Listing({
-//     title: "My New Villa",
-//     description: "By the beach",
-//     price: 1200,
-//     location: "Calangute, Goa",
-//     country: "India",
-//   }));
-
-//   await sampleListing.save();
-//   console.log("sample was saved");
-//   res.send("successful testing");
-// });
 
 
 
