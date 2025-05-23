@@ -120,6 +120,20 @@ app.use((err, req, res, next) => {
 });
 
 
+app.get('/verify-test', (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta name="google-site-verification" content="Vlad6XQ948zQTvUd2cVJ81V5l2buE__ekX0xEYpnO30" />
+      <title>Verification Test</title>
+    </head>
+    <body><h1>Verification Test</h1></body>
+    </html>
+  `);
+});
+
+
 
 app.listen(8080, () => {
   console.log("server is listening to port 8080");
